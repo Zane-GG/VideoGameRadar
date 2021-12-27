@@ -14,6 +14,12 @@ class Window(Frame):
         # FONTS
         self.h1font = tkFont.Font(family="Serif", size=30)
 
+        self.page1()
+
+    def clickExitButton(self):
+        exit()
+
+    def page1(self):
         title = Label(text="Video Game Radar",
                       fg="black",
                       font=self.h1font
@@ -26,10 +32,11 @@ class Window(Frame):
         exitButton = Button(self, text="Exit", width=15, height=5, command=self.clickExitButton)
         exitButton.place(relx=0.55, rely=0.4, anchor='center')
 
-    def clickExitButton(self):
-        exit()
-
     def page2(self):
+
+        for widgets in root.winfo_children():
+            widgets.destroy()
+
         a = Label(text="Testing",
                   fg="red",
                   font=self.h1font
