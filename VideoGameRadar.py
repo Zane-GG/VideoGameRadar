@@ -1,6 +1,7 @@
 from tkinter import *
 import tkinter.font as tkFont
-
+from bs4 import BeautifulSoup
+import website
 
 class Window(Frame):
 
@@ -37,7 +38,26 @@ class Window(Frame):
         for widgets in root.winfo_children():
             widgets.destroy()
 
-        a = Label(text="Testing",
+        soup = BeautifulSoup(website.html, 'html.parser')
+
+        # data = soup.find('.wikitable').get_text()
+        # print(data)
+
+        i = 0.0
+
+        for item in soup.select('.wikitable')[6]:
+            print(item.get_text())
+
+            # b = Label(text=item,
+            #       fg="black",
+            #       font=self.h1font,
+            #       width=10000
+            #       )
+            # b.place(relx=0.5, rely=0.2+i, anchor='center')
+
+            i += 0.1
+
+        a = Label(text='2022 Game Releases',
                   fg="red",
                   font=self.h1font
                   )
